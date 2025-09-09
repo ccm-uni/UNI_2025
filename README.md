@@ -26,4 +26,7 @@ src:
 - main.cpp - Main program
 - main.h - Definitions used in the main program
 
-README.md - 
+lib:
+- HUSKYLENS - Firmware for the Husky camera
+
+README.md - This file
