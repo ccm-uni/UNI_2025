@@ -11,14 +11,13 @@ IDE: VSCode
 Plugins:
 
 - Required:
-  - PlatformIO
-  - C/C++
-  - C/C++ Extension Pack
+  - [PlatformIO](https://marketplace.visualstudio.com/items?itemName=platformio.platformio-ide)
+  - [C/C++](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools)
+  - [C/C++ Extension Pack](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools-extension-pack)
 - Recomended
-  - Clang-Format
-  - Makefile Tools
-  - Peacock
-  - vscode-icons
+  - [Clang-Format](https://marketplace.visualstudio.com/items?itemName=xaver.clang-format)
+  - [Peacock](https://marketplace.visualstudio.com/items?itemName=johnpapa.vscode-peacock)
+  - [vscode-icons](https://marketplace.visualstudio.com/items?itemName=vscode-icons-team.vscode-icons)
 
 ## Code structure
 

@@ -1,9 +1,11 @@
 #include "main.h"
 
 void setup() {
-  Wire.begin(10, 11);
-  initMotors();
+  Wire.begin(i2cSDA1, i2cSCL1); // Start i2c bus
 
+  initMotors(); // Attach motors to the 
+
+  // Attach i2c HUSKYLENS Camera
   while (!camera.begin(Wire)) {
     Serial.println(F("Begin failed!"));
     Serial.println(F("1.Please recheck the \"Protocol Type\" in HUSKYLENS "
@@ -12,6 +14,7 @@ void setup() {
     delay(100);
   }
 
+  // Connect to PS4 controller
   while (!controller.begin(PS4MacAddress)) {
     Serial.println("Failled to connect to PS4 Controller");
   }
