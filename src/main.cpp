@@ -1,12 +1,15 @@
 #include "main.h"
 
+
+// Runs once at the begining of the program
 void setup() {
   Wire.begin(i2cSDA1, i2cSCL1); // Start i2c bus
 
-  initMotors(); // Attach motors to the 
+  initMotors(); // Attach motors to the
 
   // Attach i2c HUSKYLENS Camera
   while (!camera.begin(Wire)) {
+    // If connection fails, print out a sugesition to fix it
     Serial.println(F("Begin failed!"));
     Serial.println(F("1.Please recheck the \"Protocol Type\" in HUSKYLENS "
                      "(General Settings>>Protocol Type>>I2C)"));
@@ -15,24 +18,18 @@ void setup() {
   }
 
   // Connect to PS4 controller
-  while (!controller.begin(PS4MacAddress)) {
+  while (!controller.begin(PS4MacAddress))
     Serial.println("Failled to connect to PS4 Controller");
-  }
 }
 
+
+// Main program loop
 void loop() {
-  safetyCheck();
-  updateControllers();
+  safetyCheck(); // Make sure that everything is running properly
 
   drive(lStickY, lStickX, rStickX);
 }
 
-void updateControllers() {
-  lStickX = controller.data.analog.stick.lx;
-  lStickY = controller.data.analog.stick.ly;
-  rStickX = controller.data.analog.stick.rx;
-  rStickY = controller.data.analog.stick.ry;
-}
 
 /**
  * Safety loop to check if stuff is still connected
@@ -44,22 +41,25 @@ void safetyCheck() {
     drive(0, 0, 0);
   }
 
-  if (1) {
-    /* code */
+  if (1) { /* code */
   }
 }
+
 
 /**
  * Attaches the motors to their corrisponding pins
  */
 bool initMotors() {
-  for (int i = 0; i < 4; i++) {
+  for (int i = 0; i < 4; i++)
     motor->attach(motorPins[i]);
-  }
 
   return true;
 }
 
+
+/**
+ * Calculate motor speeds for a mechanum based system
+ */
 void drive(float xSpeed, float ySpeed, float turn) {
 
   motorPowers[0] = xSpeed + ySpeed + turn;

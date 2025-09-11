@@ -14,6 +14,11 @@
 #include "MotorDriver.h"
 #include "PS4Controller.h"
 
+#define lStickX controller.data.analog.stick.lx
+#define lStickY controller.data.analog.stick.ly
+#define rStickX controller.data.analog.stick.rx
+#define rStickY controller.data.analog.stick.ry
+
 HUSKYLENS camera; // Vision camera
 PS4Controller controller; // Main ps4 controller
 Servo motor[4]; // Array that stores the motors
@@ -30,11 +35,8 @@ byte motorPins[4] = {0, 1, 2, 3};
 // Stores the current target powers of the motors
 int8_t motorPowers[4] = {0, 0, 0, 0};
 
-// Gamepad stick positions
-int8_t lStickX, lStickY, rStickX, rStickY;
 
 void safetyCheck();
-void updateControllers();
 bool initMotors();
 void drive(float xSpeed, float ySpeed, float turn);
 
